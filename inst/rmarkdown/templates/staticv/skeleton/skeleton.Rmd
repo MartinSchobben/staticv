@@ -1,0 +1,53 @@
+---
+author: Max Mustermann
+title: Digital Library Manager Position
+address: |
+  Musterstr 22   
+  12110 Musterstadt    
+  Musterland
+telephone: 070-21444
+email: mustermann@mustermail.com
+abstract: |
+  I am a Librarian at Musterstadt's main library with 4 years of experience helping cataloging the collection in a new digital system. I am looking for a new challenging position where I can advance on my knowledge in digitalizing library assets.
+lang: en
+social: 
+  Twitter: https://twitter.com/home
+  ORCID: https://orcid.org/
+  LinkedIn: https://www.linkedin.com/
+  webpage: https://de.wikipedia.org/wiki/Mustermann
+output: staticv::staticv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+------
+
+## Work experience
+
+```{r experience}
+staticv::get_CV_table('experience') |> 
+  staticv::reformat_cv_table(c("begin", "end"), c("position", "place", "description")) |> 
+  staticv::add_cv_table()
+```
+
+------
+
+## Education
+
+```{r education}
+staticv::get_CV_table('education') |> 
+  staticv::reformat_cv_table(c("begin", "end"), c("title", "place", "degree")) |> 
+  staticv::add_cv_table()
+```
+
+------
+
+## Skills
+
+```{r skills}
+staticv::get_CV_table('skills') |> 
+  staticv::reformat_cv_table("skill", "item") |> 
+  staticv::add_cv_table()
+```

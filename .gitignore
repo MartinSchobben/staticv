@@ -1,2 +1,5 @@
 .Rproj.user
-CV_db.sqlite
+*.sqlite
+my_CV.tex
+*.pdf
+my_CV.Rmd

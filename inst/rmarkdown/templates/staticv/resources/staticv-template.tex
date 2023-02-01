@@ -1,0 +1,101 @@
+% define the document class and associated options (e.g. fontsize)
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$paper,
+$endif$
+$if(aspectratio)$
+  aspectratio=$aspectratio$,
+$endif$
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{scrartcl}
+
+% dependencies
+\usepackage{fancyhdr} % nice headers
+\usepackage{longtable,booktabs,array} % tables
+\usepackage{hanging} % hanging paragraph for references
+\usepackage{hyperref} % using hyperlinks
+\usepackage[nodayofweek]{datetime} % date and time
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[language=$lang$]{lipsum} % for example
+
+% language
+$if(lang)$
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+$if(babel-lang)$
+\babelprovide[main,import]{$babel-lang$}
+$if(mainfont)$
+\ifPDFTeX
+\else
+\babelfont[$babel-lang$]{rm}{$mainfont$}
+\fi
+$endif$
+$endif$
+$for(babel-otherlangs)$
+\babelprovide[import]{$babel-otherlangs$}
+$endfor$
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+$endif$
+
+% section numbering
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+
+% indentation
+\setlength{\parindent}{0pt}
+
+%% hyperlink color
+\hypersetup{
+  colorlinks = true, %Colours links instead of ugly boxes
+  urlcolor = blue, %Colour for external hyperlinks
+  linkcolor = blue, %Colour of internal links
+  citecolor = red %Colour of citations
+}
+
+% headers
+\pagestyle{fancy}
+\fancyhead[L]{$author$ ($title$)}
+\fancyhead[R]{\today}
+\setlength{\headheight}{13.6pt}
+
+% latex logo
+\newcommand{\latex}{\LaTeX}
+
+%% body of cv
+\begin{document}
+
+% details
+$if(address)$
+$author$\\
+$address$\\
+$telephone$\\
+\url{$email$}
+$endif$
+
+% social (/pairs = convert to array of maps with key value)
+$for(social/pairs)$
+  \href{$it.value$}{$it.key$}\\
+$endfor$
+
+% bioblurb
+\begin{abstract}
+\noindent
+$abstract$
+\end{abstract}
+
+% main
+$body$
+\end{document}
