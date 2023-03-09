@@ -27,8 +27,8 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Work experience
 
 ```{r experience}
-staticv::get_CV_table('experience') |> 
-  staticv::reformat_cv_table(c("begin", "end"), c("position", "place", "description")) |> 
+staticv::get_CV_table('experience') |>
+  staticv::reformat_cv_table(c("begin", "end"), c("position", "place", "description")) |>
   staticv::add_cv_table()
 ```
 
@@ -37,8 +37,8 @@ staticv::get_CV_table('experience') |>
 ## Education
 
 ```{r education}
-staticv::get_CV_table('education') |> 
-  staticv::reformat_cv_table(c("begin", "end"), c("title", "place", "degree")) |> 
+staticv::get_CV_table('education') |>
+  staticv::reformat_cv_table(c("begin", "end"), c("degree", "title", "place")) |>
   staticv::add_cv_table()
 ```
 
@@ -47,7 +47,7 @@ staticv::get_CV_table('education') |>
 ## Skills
 
 ```{r skills}
-staticv::get_CV_table('skills') |> 
-  staticv::reformat_cv_table("skill", "item") |> 
+staticv::get_CV_table('skills') |>
+  staticv::reformat_cv_table("skill", "item") |>
   staticv::add_cv_table()
 ```

@@ -6,9 +6,6 @@ $endif$
 $if(papersize)$
   $papersize$paper,
 $endif$
-$if(aspectratio)$
-  aspectratio=$aspectratio$,
-$endif$
 $for(classoption)$
   $classoption$$sep$,
 $endfor$
@@ -20,7 +17,7 @@ $endfor$
 \usepackage{hanging} % hanging paragraph for references
 \usepackage{hyperref} % using hyperlinks
 \usepackage[nodayofweek]{datetime} % date and time
-\usepackage[margin=1in]{geometry} % margins
+\usepackage[left=2.5cm, right=2.5cm, bottom=2.5cm]{geometry} % margins
 \usepackage[language=$lang$]{lipsum} % for example
 
 % language

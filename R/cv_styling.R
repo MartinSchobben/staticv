@@ -17,7 +17,7 @@
 #' reformat_cv_table(iris, "Sepal.Length", c("Sepal.Width", "Petal.Width")) |>
 #'  add_cv_table()
 add_cv_table <- function(topic, align = "l", font_size = NULL, bold = TRUE,
-                         width_key = "2.5cm", width_body = "13cm") {
+                         width_key = "3cm", width_body = "13cm") {
 
   # where is the header of each section
   header <- grepl(".", topic$key)
@@ -80,7 +80,11 @@ reformat_cv_table <- function(topic, key, body, sep = "--") {
   tb <- dplyr::select(topic, key, body) |>
     tidyr::pivot_longer(!c(key), values_to = "body") |>
     # merge key names if exist
-    tidyr::unite("key", !!!key, sep = sep)
+    tidyr::unite("key", !!!key, sep = sep) |>
+    dplyr::select(!name) |>
+    # arrange according to key
+    dplyr::arrange(dplyr::across(key, dplyr::desc))
+
 
   # remove duplicate keys
   tb[["key"]][duplicated(tb[["key"]])] <- ""
