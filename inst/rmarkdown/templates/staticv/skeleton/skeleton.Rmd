@@ -15,7 +15,9 @@ social:
   ORCID: https://orcid.org/
   LinkedIn: https://www.linkedin.com/
   webpage: https://de.wikipedia.org/wiki/Mustermann
-output: staticv::staticv
+output: 
+  staticv::staticv:
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
