@@ -1,6 +1,6 @@
 #!/bin/bash
-sqlite3 << 'END_SQL'
-.open 'CV_db.sqlite'
+
+sqlite3 "$1_CV_db.sqlite" << 'END_SQL'
 .nullvalue NULL
 .headers on
 .mode column

@@ -9,7 +9,7 @@ add_cv_table(
   align = "l",
   font_size = NULL,
   bold = TRUE,
-  width_key = "2.5cm",
+  width_key = "3cm",
   width_body = "13cm"
 )
 }

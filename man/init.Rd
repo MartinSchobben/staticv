@@ -6,6 +6,9 @@
 \usage{
 init()
 }
+\arguments{
+\item{name}{Short name for sqlite database.}
+}
 \value{
 Invisibly returns NULL.
 }

@@ -1,5 +1,6 @@
 #' Initialize database.
 #'
+#' @param name Short name for sqlite database.
 #' @return Invisibly returns NULL.
 #' @export
 #'
@@ -7,14 +8,15 @@
 #' if (interactive()) {
 #'  init()
 #' }
-init <- function() {
+init <- function(name) {
 
-  if (file.exists("CV_db.sqlite")) {
+  if (file.exists(paste0(name, "_db.sqlite"))) {
     stop("Database already exists.", call. = FALSE)
   }
 
   system2(
     system.file(package = "staticv", "bash", "sqlite.sh"),
+    name,
     stdout = FALSE,
     stderr = FALSE
   )
