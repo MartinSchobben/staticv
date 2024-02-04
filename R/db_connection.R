@@ -1,6 +1,5 @@
 #' Initialize database.
 #'
-#' @param name Short name for sqlite database.
 #' @return Invisibly returns NULL.
 #' @export
 #'
@@ -8,8 +7,9 @@
 #' if (interactive()) {
 #'  init()
 #' }
-init <- function(name) {
+init <- function() {
 
+  name <- basename(getwd())
   if (file.exists(paste0(name, "_db.sqlite"))) {
     stop("Database already exists.", call. = FALSE)
   }
@@ -35,5 +35,5 @@ init <- function(name) {
 #'  get_connection()
 #' }
 get_connection <- function() {
-  DBI::dbConnect(RSQLite::SQLite(), "CV_db.sqlite")
+  DBI::dbConnect(RSQLite::SQLite(), paste0(basename(getwd()), "_db.sqlite"))
 }
